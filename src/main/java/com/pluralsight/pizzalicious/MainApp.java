@@ -62,7 +62,7 @@ public class MainApp {
         System.out.println("════════════════════════");
         System.out.println("1️⃣ Add a Drink");
         System.out.println("2️⃣ Checkout");
-        System.out.println("0️⃣ Exit");
+        System.out.println("0️⃣  Exit");
         System.out.println("═════════════════════════");
     }
 
