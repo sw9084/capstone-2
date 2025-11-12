@@ -1,50 +1,61 @@
 package com.pluralsight.pizzalicious;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
-    // ====================================
-    // ⭐Fields (Attributes)
-    // ====================================
-    private ArrayList<Drink> drinks = new ArrayList<>();
-    // ====================================
-    // Methods
-    // Add a new drink object to the order
-    // calculate the total price of all drink in the order
-    // ====================================
+
+    //---------------Store all drinks and pizzas for this order------------
+    private List<Drink> drinks;
+    private List<Pizza> pizzas;
+
+    //----------------Construction initializes both lists-------------------
+    public Order() {
+        this.drinks = new ArrayList<>();
+        this.pizzas = new ArrayList<>();
+    }
+    //---------------Add drinks---------------------------
 
     public void addDrink(Drink drink) {
         drinks.add(drink);
+        System.out.println("✅ " + drink.getSize() + " " + drink.getFlavor() + " Added to order!");
     }
 
     public double getTotal() {
-        double total = 0;
+        double total = 0.0;
         for (Drink d : drinks) {
             total += d.getPrice();
+        }
+        for (Pizza p : pizzas) {
+            total += p.calculatePrice();
         }
         return total;
     }
 
-    /** Display the list of drinks and the total price.
-     * This will be used by the User Interface (MainApp)
-     */
+    //---------------Print Order Summery---------------
 
     public void printorder() {
-        if (drinks.isEmpty()) {
-            System.out.println("No drink in your order yet. ");
+        System.out.println("\n══════════Order Summary══════════");
+        if (drinks.isEmpty() && pizzas.isEmpty()) {
+            System.out.println(" No items in your order yet!");
             return;
         }
-        System.out.println("══════════Order Summary══════════");
-        for (Drink d : drinks) {
-            System.out.println("➡️" + d.getDescription());
+        if (!pizzas.isEmpty()) ;
+        System.out.println("\n════PIZZAS════");
+        for (Pizza p : pizzas) {
+            System.out.println("➡️" + p.getDescription());
         }
-        System.out.printf("➡️" +"Total: $%.2f%n", getTotal());
+        if (!drinks.isEmpty()) {
+            System.out.println("\n════DRINKS════");
+            for (Drink d : drinks) {
+                d.displayInfo();
+            }
+        }
+        System.out.printf("➡️" + "Total: $%.2f%n", getTotal());
         System.out.println("═════════════════════");
     }
 
-    /** Clear all items from the order
-     */
-
+    //-------clear order after checkout-------------
     public void clearOrder() {
         drinks.clear();
         pizzas.clear();
