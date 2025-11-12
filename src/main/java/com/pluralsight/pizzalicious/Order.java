@@ -47,6 +47,7 @@ public class Order {
 
     public void clearOrder() {
         drinks.clear();
+        pizzas.clear();
         System.out.println(" order cleared Successfully");
     }
 }
