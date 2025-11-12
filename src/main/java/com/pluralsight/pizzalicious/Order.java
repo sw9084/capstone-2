@@ -8,7 +8,7 @@ public class Order {
     // ====================================
     private ArrayList<Drink> drinks = new ArrayList<>();
     // ====================================
-    //⭐Methods
+    // Methods
     // Add a new drink object to the order
     // calculate the total price of all drink in the order
     // ====================================

@@ -31,9 +31,8 @@ public class Drink {
         }
 
     }
-    // =================================
-    // ⭐Getter used to read value
-    // =================================
+    // ---------------Getter used to read value--------------
+
 
     public String getFlavor() {
         return flavor;
@@ -46,9 +45,9 @@ public class Drink {
     public double getPrice() {
         return price;
     }
-    // ======================================
-    // ⭐Methode to show the drink's description
-    // ======================================
+
+    //-------------Methode to show the drink's description---------
+
 
     public String getDescription() {
         return size + " " + flavor + " - $" + String.format("%.2f", price);

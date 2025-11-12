@@ -48,10 +48,10 @@ public class Pizza {
     }
     public String getDescription() {
         StringBuilder sb = new StringBuilder();
-        sb.append("\n═══════════Pizza Summary══════════\n");
+        sb.append("\n═══════════ Pizza Summary ══════════\n");
         sb.append("➡️Size: ").append(size);
         sb.append("\n➡️Crust: ").append(crust);
-        if (stuffedCrust) sb.append(" (stuffed) ");
+        if (stuffedCrust) sb.append(" (stuffed)");
         sb.append("\n➡️Toppings: ");
         if(toppings.isEmpty()) {
             sb.append(("❌No topping"));
