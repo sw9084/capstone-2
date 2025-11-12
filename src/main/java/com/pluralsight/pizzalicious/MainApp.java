@@ -51,14 +51,40 @@ public class MainApp {
 
     private static void displayWelcomeMessage() {
         System.out.println("╔═════════════════════════════════════════════════════╗");
-        System.out.println("║            🍕  Welcome to PizzaLicious              🍕  ║");
-        System.out.println("║    Your Custom Pizza and Drink Experience           ║");
+        System.out.println("║            🍕  Welcome to PizzaLicious              🍕║");
+        System.out.println("║         Your Custom Pizza and Drink Experience      ║");
         System.out.println("╚═════════════════════════════════════════════════════╝");
-        {
-
-        }
-
     }
+
+    //--------------Customer info method-------------------
+    private static void collectCustomerInfo() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\n👤═══════════ CUSTOMER INFORMATION ═══════════");
+        System.out.println("Enter customer name:");
+        String name = scanner.nextLine();
+
+        System.out.println("Enter phone number: ");
+        String phone = scanner.nextLine();
+
+        System.out.println("Delivery or pick up? (D/P): ");
+        String type = scanner.nextLine().trim().toUpperCase();
+
+        boolean isDelivery = type.equals("D");
+        String address = " ";
+
+        if (isDelivery) {
+            System.out.println("Enter delivery address: ");
+            address = scanner.nextLine();
+        }
+        Customer customer = new Customer(name, phone, isDelivery, address);
+        order.setCustomer(customer);
+        System.out.println("\n✅Customer added successfully!");
+    }
+
+
+    //--------------Main Menu------------------------
+
 
     private static void displayMainMenu() {
         System.out.println("\n     Main Menu     ");
@@ -68,6 +94,8 @@ public class MainApp {
         System.out.println("0️⃣  Exit");
         System.out.println("═════════════════════════");
     }
+    //----------Add Drink-----------------------------
+
 
     private static void addDrink() {
         System.out.print("Please enter drink flavor: ");
@@ -80,20 +108,20 @@ public class MainApp {
         System.out.println(" ✅ " + size + " " + flavor + " added to your order!");
 
     }
-
+    //------------------Checkout---------------------------
 
     private static void checkout() {
         System.out.println("\n═══════════Checkout Summary═════════ ");
 
-        //Quick Test for pizza and topping
-    Topping cheese = new Topping("Cheese", "non-meat", false);
-    Topping pepperoni = new Topping("pepperoni","meat", false);
-    Topping extraCheese = new Topping("Extra cheese", "non-meat", true);
-    // create pizza with base setting
-    Pizza pizza = new Pizza("Medium", "regular", true, 10.00);
-    pizza.addTopping(cheese);
-    pizza.addTopping(pepperoni);
-    pizza.addTopping(extraCheese);
+        //------------Quick Test for pizza and topping--------------
+        Topping cheese = new Topping("Cheese", "non-meat", false);
+        Topping pepperoni = new Topping("pepperoni", "meat", false);
+        Topping extraCheese = new Topping("Extra cheese", "non-meat", true);
+        //--------------- create pizza with base setting-----------------
+        Pizza pizza = new Pizza("Medium", "regular", true, 10.00);
+        pizza.addTopping(cheese);
+        pizza.addTopping(pepperoni);
+        pizza.addTopping(extraCheese);
 
 
         System.out.println(pizza.getDescription());

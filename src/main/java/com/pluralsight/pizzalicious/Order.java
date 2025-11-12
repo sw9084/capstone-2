@@ -9,6 +9,11 @@ public class Order {
     private List<Drink> drinks;
     private List<Pizza> pizzas;
 
+    private Customer customer;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     //----------------Construction initializes both lists-------------------
     public Order() {
         this.drinks = new ArrayList<>();
@@ -36,6 +41,12 @@ public class Order {
 
     public void printorder() {
         System.out.println("\n══════════Order Summary══════════");
+        if (customer != null) {
+            System.out.println("\n👤═══════Customer Information═════");
+            System.out.println(customer.getSummary());
+        } else {
+            System.out.println("\n Customer information not provided.");
+        }
         if (drinks.isEmpty() && pizzas.isEmpty()) {
             System.out.println(" No items in your order yet!");
             return;
