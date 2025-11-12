@@ -34,11 +34,12 @@ public class Order {
             System.out.println("No drink in your order yet. ");
             return;
         }
-        System.out.println("Order Summary:");
+        System.out.println("══════════Order Summary══════════");
         for (Drink d : drinks) {
             System.out.println("➡️" + d.getDescription());
         }
         System.out.printf("➡️" +"Total: $%.2f%n", getTotal());
+        System.out.println("═════════════════════");
     }
 
     /** Clear all items from the order

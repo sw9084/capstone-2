@@ -17,7 +17,7 @@ public class Drinkteast {
         order.addDrink(d3);
 
         System.out.println("\n====Testing Drink and order Classes ====");
-        order.printorder();
+       // order.printorder();
 
         double expectedTotal = 2.00 + 3.00 + 2.50;
         System.out.printf("\nExpected total: $%.2f%n", expectedTotal);

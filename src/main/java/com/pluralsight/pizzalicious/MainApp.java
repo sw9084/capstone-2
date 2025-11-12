@@ -1,5 +1,7 @@
 package com.pluralsight.pizzalicious;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Scanner;
 
 public class MainApp {
@@ -76,13 +78,29 @@ public class MainApp {
         order.addDrink(drink);
 
         System.out.println(" ✅ " + size + " " + flavor + " added to your order!");
+
     }
 
+
     private static void checkout() {
-        System.out.println("\n═══════Checkout Summary════ ");
-        order.printorder();
+        System.out.println("\n═══════════Checkout Summary═════════ ");
+
+        //Quick Test for pizza and topping
+    Topping cheese = new Topping("Cheese", "non-meat", false);
+    Topping pepperoni = new Topping("pepperoni","meat", false);
+    Topping extraCheese = new Topping("Extra cheese", "non-meat", true);
+    // create pizza with base setting
+    Pizza pizza = new Pizza("Medium", "regular", true, 10.00);
+    pizza.addTopping(cheese);
+    pizza.addTopping(pepperoni);
+    pizza.addTopping(extraCheese);
+
+
+        System.out.println(pizza.getDescription());
 
     }
 }
+
+
 
 

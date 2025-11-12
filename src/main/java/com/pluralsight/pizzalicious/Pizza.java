@@ -10,7 +10,7 @@ public class Pizza {
     private  final double basePrice;
 
     // -------------------Constructor--------------------------
-    public Pizza(String size, String crust, boolean stuffedCrust) {
+    public Pizza(String size, String crust, boolean stuffedCrust, double basePrice) {
         this.size = size;
         this.crust = crust;
         this.stuffedCrust = stuffedCrust;
@@ -48,16 +48,21 @@ public class Pizza {
     }
     public String getDescription() {
         StringBuilder sb = new StringBuilder();
-        sb.append("\nToppings: ");
+        sb.append("\n═══════════Pizza Summary══════════\n");
+        sb.append("➡️Size: ").append(size);
+        sb.append("\n➡️Crust: ").append(crust);
+        if (stuffedCrust) sb.append(" (stuffed) ");
+        sb.append("\n➡️Toppings: ");
         if(toppings.isEmpty()) {
-            sb.append(("No topping"));
+            sb.append(("❌No topping"));
         } else {
             for (Topping t : toppings) {
-                sb.append(sb.append(t.getName()).append(", "));
+                sb.append(t.getName()).append(", ");
             }
-            sb.delete(sb.length() -2, sb.length());
+            sb.setLength(sb.length() -2);
         }
-        sb.append(String.format("\nPrice: $%.2f", calculatePrice()));
+        sb.append(String.format("\n💲Price: $%.2f\n", calculatePrice()));
+        sb.append("═══════════════════════════");
         return sb.toString();
 
     }
