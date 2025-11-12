@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class MainApp {
     private static Scanner scanner = new Scanner(System.in);
     private static Order order = new Order();
+    // the main method entry point of the application
 
     public static void main(String[] args) {
         displayWelcomeMessage();
@@ -78,7 +79,7 @@ public class MainApp {
     }
 
     private static void checkout() {
-        System.out.println("\n Checkout Summary: ");
+        System.out.println("\n═══════Checkout Summary════ ");
         order.printorder();
 
     }
