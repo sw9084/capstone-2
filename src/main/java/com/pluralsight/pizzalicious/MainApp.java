@@ -1,12 +1,10 @@
 package com.pluralsight.pizzalicious;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.Scanner;
 
 public class MainApp {
-    private static Scanner scanner = new Scanner(System.in);
-    private static Order order = new Order();
+    private static final Scanner scanner = new Scanner(System.in);
+    private static final Order order = new Order();
     // the main method entry point of the application
 
     public static void main(String[] args) {
@@ -16,6 +14,7 @@ public class MainApp {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
+        collectCustomerInfo();
         runProgram();
     }
 
@@ -104,8 +103,25 @@ public class MainApp {
     private static void addDrink() {
         System.out.print("Please enter drink flavor: ");
         String flavor = scanner.nextLine();
-        System.out.print("Enter size (Small / Medium / large): ");
-        String size = scanner.nextLine();
+        System.out.print("Enter size (S/ M/ L): ");
+        String sizeChoice = scanner.nextLine().trim().toUpperCase();
+        String size;
+        switch (sizeChoice) {
+            case "S":
+                size = "Small";
+                break;
+            case "M":
+                size = "Medium";
+                break;
+            case "L":
+                size = "Large";
+                break;
+            default:
+                System.out.println("Invalid choice. defaulting to medium. ");
+                size = "Medium";
+
+        }
+
         Drink drink = new Drink(flavor, size);
         order.addDrink(drink);
 
@@ -115,8 +131,6 @@ public class MainApp {
     }
 
     private static void addPizza() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("\n═════════ Build Your Pizza ═══════");
         System.out.println("S - Small");
         System.out.println("M - Medium");
@@ -210,7 +224,7 @@ public class MainApp {
             int categoryChoice = scanner.nextInt();
             scanner.nextLine();
 
-            String category =(categoryChoice == 1) ? "meat" : "non-meat";
+            String category = (categoryChoice == 1) ? "meat" : "non-meat";
 
             System.out.println("Extra portion? (Y/N): ");
             String extraInput = scanner.nextLine().trim().toUpperCase();
@@ -229,18 +243,6 @@ public class MainApp {
     private static void checkout() {
         System.out.println("\n═══════════Checkout Summary═════════ ");
 
-        //------------Quick Test for pizza and topping--------------
-        Topping cheese = new Topping("Cheese", "non-meat", false);
-        Topping pepperoni = new Topping("pepperoni", "meat", false);
-        Topping extraCheese = new Topping("Extra cheese", "non-meat", true);
-        //--------------- create pizza with base setting-----------------
-        Pizza pizza = new Pizza("Medium", "regular", true);
-        pizza.addTopping(cheese);
-        pizza.addTopping(pepperoni);
-        pizza.addTopping(extraCheese);
-
-
-        System.out.println(pizza.getDescription());
 
     }
 }

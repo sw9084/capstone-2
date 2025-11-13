@@ -3,7 +3,10 @@ package com.pluralsight.pizzalicious;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Order {
+    private static final double TAX_RATE = 0.0825;
+    private static final double DELIVERY_FEE = 3.99;
 
     //---------------Store all drinks and pizzas for this order------------
     private List<Drink> drinks;
@@ -11,14 +14,14 @@ public class Order {
 
     private Customer customer;
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     //----------------Construction initializes both lists-------------------
     public Order() {
         this.drinks = new ArrayList<>();
         this.pizzas = new ArrayList<>();
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
     //---------------Add drinks---------------------------
 
@@ -28,15 +31,17 @@ public class Order {
     }
 
     public double getTotal() {
-        double total = 0.0;
+        double subtotal = 0.0;
         for (Drink d : drinks) {
-            total += d.getPrice();
+            subtotal += d.getPrice();
         }
 
         for (Pizza p : pizzas) {
-            total += p.calculatePrice();
+            subtotal += p.calculatePrice();
         }
-        return total;
+        double tax = subtotal * TAX_RATE;
+        double delivery = (customer != null && customer.isDelivery()) ? DELIVERY_FEE : 0;
+        return subtotal + tax + delivery;
     }
 
     public void addPizza(Pizza pizza) {
@@ -45,7 +50,11 @@ public class Order {
 
     //---------------Print Order Summery---------------
 
-    public void printorder() {
+    public void printOrder() {
+        double subtotal = getTotal();
+        double tax = subtotal * TAX_RATE;
+        double delivery = customer.isDelivery() ? DELIVERY_FEE : 0.0;
+
         System.out.println("\n══════════Order Summary══════════");
         if (customer != null) {
             System.out.println("\n👤═══════Customer Information═════");
@@ -57,25 +66,35 @@ public class Order {
             System.out.println(" No items in your order yet!");
             return;
         }
-        if (!pizzas.isEmpty()) ;
-        System.out.println("\n════PIZZAS════");
-        for (Pizza p : pizzas) {
-            System.out.println("➡️" + p.getDescription());
-        }
-        if (!drinks.isEmpty()) {
-            System.out.println("\n════DRINKS════");
-            for (Drink d : drinks) {
-                d.displayInfo();
+        if (!pizzas.isEmpty()) {
+            System.out.println("\n════PIZZAS════");
+            for (Pizza p : pizzas) {
+                System.out.println("➡️" + p.getDescription());
             }
+            if (!drinks.isEmpty()) {
+                System.out.println("\n════DRINKS════");
+                for (Drink d : drinks) {
+                    d.displayInfo();
+                }
+            }
+            System.out.printf("\n Subtotal: $%.2f", subtotal);
+            System.out.printf("\n Tax (8.25%%): $%.2f", tax);
+
+            if (delivery > 0) {
+                System.out.println("\n 🚚 Delivery Fee: $%.2f, delivery");
+            }
+            System.out.printf("\n💲Total: $%.2f%n", (subtotal + tax + delivery));
+            System.out.println("═════════════════════");
         }
-        System.out.printf("➡️" + "Total: $%.2f%n", getTotal());
-        System.out.println("═════════════════════");
     }
+
 
     //-------clear order after checkout-------------
     public void clearOrder() {
+
         drinks.clear();
         pizzas.clear();
         System.out.println(" order cleared Successfully");
     }
 }
+
