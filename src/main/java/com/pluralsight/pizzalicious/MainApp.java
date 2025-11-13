@@ -39,6 +39,9 @@ public class MainApp {
                 case 2:
                     checkout();
                     break;
+                case 3:
+                    addPizza();
+                    break;
                 case 0:
                     System.out.println("\n❤️ Thank you for visiting PizzaLicious! ");
                     System.out.println("Have a great day!");
@@ -91,6 +94,7 @@ public class MainApp {
         System.out.println("════════════════════════");
         System.out.println("1️⃣ Add a Drink");
         System.out.println("2️⃣ Checkout");
+        System.out.println("3️⃣ Add a Pizza");
         System.out.println("0️⃣  Exit");
         System.out.println("═════════════════════════");
     }
@@ -107,6 +111,118 @@ public class MainApp {
 
         System.out.println(" ✅ " + size + " " + flavor + " added to your order!");
 
+
+    }
+
+    private static void addPizza() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\n═════════ Build Your Pizza ═══════");
+        System.out.println("S - Small");
+        System.out.println("M - Medium");
+        System.out.println("L - Large");
+        System.out.println("Enter choice: ");
+
+        String sizeChoice = scanner.nextLine().trim().toUpperCase();
+        String size;
+        switch (sizeChoice) {
+            case "S":
+                size = "small";
+                break;
+            case "M":
+                size = "medium";
+                break;
+
+            case "L":
+                size = "large";
+                break;
+            default:
+                System.out.println("Invalid choice. Defaulting to medium. ");
+                size = "medium";
+        }
+
+        System.out.println("Choose Crust:");
+        System.out.println("T - Thin");
+        System.out.println("R - Regular");
+        System.out.println("K - Thick");
+        System.out.println("Enter crust");
+
+        String crustChoice = scanner.nextLine().trim().toUpperCase();
+        String crust;
+        switch (crustChoice) {
+            case "T":
+                crust = "thin";
+                break;
+            case "R":
+                crust = "regular";
+                break;
+            case "K":
+                crust = "thick";
+                break;
+            default:
+                System.out.println("Invalid choice. Defaulting to regular crust");
+                crust = "regular";
+        }
+
+        System.out.println("Stuffed crust? (Y/N): ");
+        String stuffedInput = scanner.nextLine().trim().toUpperCase();
+        boolean stuffed = stuffedInput.equals("Y");
+
+        //--------Create base pizza---------
+        Pizza pizza = new Pizza(size, crust, stuffed);
+        //--------Add topping---------------
+        System.out.println("How many topping? ");
+        int count = scanner.nextInt();
+        for (int i = 0; i < count; i++) {
+            System.out.println("\nChoose topping: ");
+            System.out.println("1️⃣ Sausage");
+            System.out.println("2️⃣ Pepperoni");
+            System.out.println("3️⃣ Mushroom");
+            System.out.println("4️⃣ Olives");
+            System.out.println("Enter choice: ");
+
+            int toppingChoice = scanner.nextInt();
+            scanner.nextLine();
+
+            String name = "";
+            switch (toppingChoice) {
+                case 1:
+                    name = "Sausage";
+                    break;
+                case 2:
+                    name = "Pepperoni";
+                    break;
+                case 3:
+                    name = "Mushroom";
+                    break;
+                case 4:
+                    name = "Olives";
+                    break;
+                default:
+                    System.out.println("Invalid choice. Defaulting to cheese.");
+                    name = "Cheese";
+            }
+            System.out.println("\nChoose category:");
+            System.out.println("1. meat");
+            System.out.println("2. non-meat");
+            System.out.println(("Enter choice:"));
+
+            int categoryChoice = scanner.nextInt();
+            scanner.nextLine();
+
+            String category =(categoryChoice == 1) ? "meat" : "non-meat";
+
+            System.out.println("Extra portion? (Y/N): ");
+            String extraInput = scanner.nextLine().trim().toUpperCase();
+            boolean extra = extraInput.equals("Y");
+
+            Topping topping = new Topping(name, category, extra);
+            pizza.addTopping(topping);
+        }
+        order.addPizza(pizza);
+
+        System.out.println("\n✅ Pizza added successfully!");
+        System.out.println(pizza.getDescription());
     }
     //------------------Checkout---------------------------
 
@@ -118,7 +234,7 @@ public class MainApp {
         Topping pepperoni = new Topping("pepperoni", "meat", false);
         Topping extraCheese = new Topping("Extra cheese", "non-meat", true);
         //--------------- create pizza with base setting-----------------
-        Pizza pizza = new Pizza("Medium", "regular", true, 10.00);
+        Pizza pizza = new Pizza("Medium", "regular", true);
         pizza.addTopping(cheese);
         pizza.addTopping(pepperoni);
         pizza.addTopping(extraCheese);

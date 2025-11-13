@@ -10,6 +10,7 @@ public class Order {
     private List<Pizza> pizzas;
 
     private Customer customer;
+
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
@@ -31,10 +32,15 @@ public class Order {
         for (Drink d : drinks) {
             total += d.getPrice();
         }
+
         for (Pizza p : pizzas) {
             total += p.calculatePrice();
         }
         return total;
+    }
+
+    public void addPizza(Pizza pizza) {
+        pizzas.add(pizza);
     }
 
     //---------------Print Order Summery---------------

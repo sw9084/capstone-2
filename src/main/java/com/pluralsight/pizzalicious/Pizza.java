@@ -10,7 +10,7 @@ public class Pizza {
     private  final double basePrice;
 
     // -------------------Constructor--------------------------
-    public Pizza(String size, String crust, boolean stuffedCrust, double basePrice) {
+    public Pizza(String size, String crust, boolean stuffedCrust) {
         this.size = size;
         this.crust = crust;
         this.stuffedCrust = stuffedCrust;
@@ -20,14 +20,17 @@ public class Pizza {
     // ------------------Helper: set base price--------------------
     private double setBasePrice(String size) {
         switch (size.toLowerCase()) {
+            case "small":
             case "8":
-            case "8\"":
-            case "personal":
-                return 8.50;
+                return 8.00;
             case "medium":
+            case "12":
+                return 10.00;
+            case " large":
+            case "16":
                 return 12.00;
             default:
-                return 0.0;
+                return 10.0;
         }
     }
     //-----------------Add topping------------------------
