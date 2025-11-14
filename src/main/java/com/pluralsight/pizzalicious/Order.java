@@ -19,12 +19,14 @@ public class Order {
         this.drinks = new ArrayList<>();
         this.pizzas = new ArrayList<>();
     }
-        public List<Pizza> getPizzas() {
-          return pizzas;
+
+    public List<Pizza> getPizzas() {
+        return pizzas;
     }
-      public List<Drink> getDrinks() {
+
+    public List<Drink> getDrinks() {
         return drinks;
-      }
+    }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
@@ -83,11 +85,11 @@ public class Order {
                     d.displayInfo();
                 }
             }
-            System.out.printf("\n Subtotal: $%.2f", subtotal);
-            System.out.printf("\n Tax (8.25%%): $%.2f", tax);
+            System.out.printf("\n💰 Subtotal: $%.2f", subtotal);
+            System.out.printf("\n  Tax (8.25%%): $%.2f", tax);
 
             if (delivery > 0) {
-                System.out.println("\n 🚚 Delivery Fee: $%.2f, delivery");
+                System.out.printf("\n 🚚 Delivery Fee: $%.2f", delivery);
             }
             System.out.printf("\n💲Total: $%.2f%n", (subtotal + tax + delivery));
             System.out.println("═════════════════════");
@@ -101,6 +103,8 @@ public class Order {
         drinks.clear();
         pizzas.clear();
         System.out.println(" order cleared Successfully");
+
+
     }
 }
 

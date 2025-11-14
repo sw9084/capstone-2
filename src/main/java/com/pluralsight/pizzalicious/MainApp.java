@@ -247,8 +247,8 @@ public class MainApp {
                     name = "Cheese";
             }
             System.out.println("\nChoose category:");
-            System.out.println("1️⃣. meat");
-            System.out.println("2️⃣. non-meat");
+            System.out.println("1️⃣ meat");
+            System.out.println("2️⃣ non-meat");
             System.out.println(("Enter choice:"));
 
             int categoryChoice = scanner.nextInt();
@@ -294,8 +294,6 @@ public class MainApp {
             System.out.println("\nThank you for your order!");
         }
         System.out.println("══════════════════════════════════════\n");
-
-
 
 
     }

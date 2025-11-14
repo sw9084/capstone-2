@@ -1,13 +1,14 @@
 package com.pluralsight.pizzalicious;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Pizza {
+    private final List<Topping> toppings;         // will hold meat/cheese/regular topping
+    private final double basePrice;
     private String size;           // 8, 12, 16
     private String crust;          // thin, regular, thick, cauliflowe
     private boolean stuffedCrust;
-    private final List<Topping> toppings;         // will hold meat/cheese/regular topping
-    private  final double basePrice;
 
     // -------------------Constructor--------------------------
     public Pizza(String size, String crust, boolean stuffedCrust) {
@@ -17,6 +18,7 @@ public class Pizza {
         this.toppings = new ArrayList<>();
         this.basePrice = setBasePrice(size); // calls helper method below
     }
+
     // ------------------Helper: set base price--------------------
     private double setBasePrice(String size) {
         switch (size.toLowerCase()) {
@@ -33,10 +35,12 @@ public class Pizza {
                 return 10.0;
         }
     }
+
     //-----------------Add topping------------------------
-    public void addTopping (Topping topping) {
+    public void addTopping(Topping topping) {
         toppings.add(topping);
     }
+
     //-----------------Calculate total price----------------
     public double calculatePrice() {
         double total = basePrice;
@@ -44,11 +48,12 @@ public class Pizza {
             total += t.getPrice(size);
         }
         // Add small fee for stuffed crust
-        if(stuffedCrust) {
+        if (stuffedCrust) {
             total += 1.00;
         }
         return total;
     }
+
     public String getDescription() {
         StringBuilder sb = new StringBuilder();
         sb.append("\n═══════════ Pizza Summary ══════════\n");
@@ -56,13 +61,13 @@ public class Pizza {
         sb.append("\n➡️Crust: ").append(crust);
         if (stuffedCrust) sb.append(" (stuffed)");
         sb.append("\n➡️Toppings: ");
-        if(toppings.isEmpty()) {
+        if (toppings.isEmpty()) {
             sb.append(("❌No topping"));
         } else {
             for (Topping t : toppings) {
                 sb.append(t.getName()).append(", ");
             }
-            sb.setLength(sb.length() -2);
+            sb.setLength(sb.length() - 2);
         }
         sb.append(String.format("\n💲Price: $%.2f\n", calculatePrice()));
         sb.append("═══════════════════════════");

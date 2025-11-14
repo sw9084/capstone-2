@@ -1,18 +1,20 @@
+                    ╔══════════════════════════════════════════════════════════════════╗
+                    ║          Pizzalicious – Custom Pizza & Drink Ordering System     ║
+=========================================================================================================
 
-================================================================================================================
-                              Pizzalicious – Custom Pizza & Drink Ordering System
-================================================================================================================
-
-=========================================
- Capstone Project – Bethlehem Gebremedhen
-=========================================
+╔══════════════════════════════════════════╗
+║ CAPSTONE PROJECT – BETHLEHEM GEBREMEDHEN ║
+╚══════════════════════════════════════════╝  
 
                 📌 Overview
-
+========================================================================================================================
+This project demonstrates ability to design and implement a real-Word application using core Object-oriented Program 
+concepts. it also shows the understanding of user interaction, input validation, clean code structure and
+project organization.
 Pizzalicious is a fully interactive console-based application that allows user to build custom pizzas,
 select drinks, enter customer information, and complete a checkout with subtotal, tax, and delivery fee calculations.
 The application follows Object-Oriented Programing(OOP) Principles, using
-
+=======================================================================================================================
 
 ➡️Classes & Objects
 ➡️Encapsulation (private fields, getters/setters)
@@ -44,7 +46,7 @@ Crust type
 Multiple toppings
 Automatic price calculation
 
-3️. 🥤Add Drinks
+3️⃣🥤Add Drinks
 Users choose:
 
 Drink flavor
