@@ -88,10 +88,11 @@ src
 ➡️ follow on-screen menu instruction
 
 
-Example Menue option 1- Add drink
-                     2- Checkout
-                     3- Add a Pizza
-                     4- Exit
+Example of how look when we run it 
+## Console Output Example
+
+![Console Output](https://raw.githubusercontent.com/sw9084/capstone-2/refs/heads/main/console-output.png)
+
 👩‍💻 **Author**
 Bethlehem Gebremedhen
 Java Application Development
