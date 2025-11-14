@@ -1,8 +1,8 @@
 🍕 
 
-# Heading  Pizzalicious – Custom Pizza & Drink Ordering System
+#  Pizzalicious – Custom Pizza & Drink Ordering System
 
-### Heading  Capstone Project – Bethlehem Gebremedhen
+###   Capstone Project – Bethlehem Gebremedhen
 
 
                 📌 Overview
