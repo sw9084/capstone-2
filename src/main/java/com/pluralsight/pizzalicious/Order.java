@@ -19,6 +19,12 @@ public class Order {
         this.drinks = new ArrayList<>();
         this.pizzas = new ArrayList<>();
     }
+        public List<Pizza> getPizzas() {
+          return pizzas;
+    }
+      public List<Drink> getDrinks() {
+        return drinks;
+      }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
@@ -27,7 +33,7 @@ public class Order {
 
     public void addDrink(Drink drink) {
         drinks.add(drink);
-        System.out.println("✅ " + drink.getSize() + " " + drink.getFlavor() + " Added to order!");
+
     }
 
     public double getTotal() {
@@ -69,7 +75,7 @@ public class Order {
         if (!pizzas.isEmpty()) {
             System.out.println("\n════PIZZAS════");
             for (Pizza p : pizzas) {
-                System.out.println("➡️" + p.getDescription());
+                System.out.println(" " + p.getDescription());
             }
             if (!drinks.isEmpty()) {
                 System.out.println("\n════DRINKS════");

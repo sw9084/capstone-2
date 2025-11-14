@@ -62,7 +62,7 @@ public class MainApp {
     private static void collectCustomerInfo() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\n👤═══════════ CUSTOMER INFORMATION ═══════════");
+        System.out.println("\n═══════════ CUSTOMER INFORMATION ═══════════");
         System.out.println("Enter customer name:");
         String name = scanner.nextLine();
 
@@ -101,9 +101,39 @@ public class MainApp {
 
 
     private static void addDrink() {
-        System.out.print("Please enter drink flavor: ");
-        String flavor = scanner.nextLine();
-        System.out.print("Enter size (S/ M/ L): ");
+        System.out.println("\n================== Please choose Your Drink=================");
+        System.out.println("1️⃣ Coke");
+        System.out.println("2️⃣ Sprite");
+        System.out.println("3️⃣ Lemonade");
+        System.out.println("4️⃣ Water");
+        System.out.print("Enter drink number: ");
+
+        int drinkChoice = Integer.parseInt(scanner.nextLine());
+        String flavor;
+
+        switch (drinkChoice) {
+            case 1:
+                flavor = "Coke";
+                break;
+            case 2:
+                flavor = "Sprit";
+                break;
+            case 3:
+                flavor = "Lemonade";
+                break;
+            case 4:
+                flavor = "Water";
+                break;
+            default:
+                System.out.println("Invalid choice. defaulting to Water");
+                flavor = "Water";
+        }
+        System.out.println("\n============ Please choose Size ==============");
+        System.out.println("S = Small");
+        System.out.println("M = Medium");
+        System.out.println("L = Large");
+        System.out.println(" Enter your size:");
+
         String sizeChoice = scanner.nextLine().trim().toUpperCase();
         String size;
         switch (sizeChoice) {
@@ -217,8 +247,8 @@ public class MainApp {
                     name = "Cheese";
             }
             System.out.println("\nChoose category:");
-            System.out.println("1. meat");
-            System.out.println("2. non-meat");
+            System.out.println("1️⃣. meat");
+            System.out.println("2️⃣. non-meat");
             System.out.println(("Enter choice:"));
 
             int categoryChoice = scanner.nextInt();
@@ -242,6 +272,30 @@ public class MainApp {
 
     private static void checkout() {
         System.out.println("\n═══════════Checkout Summary═════════ ");
+        if (order.getPizzas().isEmpty() && order.getDrinks().isEmpty()) {
+            System.out.println("\n No item in your order. Please add something first!");
+            return;
+        }
+        order.printOrder();
+
+        String answer = "";
+        do {
+            System.out.print("Would you like to clear the order and start again? (Y/N): ");
+            answer = scanner.nextLine().trim().toUpperCase();
+            if (!answer.equals("Y") && !answer.equals("N")) {
+                System.out.println(" Invalid input. Please enter Y or N.");
+            }
+        } while (!answer.equals("Y") && !answer.equals("N"));
+
+        if (answer.equals("Y")) {
+            order.clearOrder();
+            System.out.println("\n🧹Order Cleared!");
+        } else {
+            System.out.println("\nThank you for your order!");
+        }
+        System.out.println("══════════════════════════════════════\n");
+
+
 
 
     }
